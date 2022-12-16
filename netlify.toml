@@ -1,0 +1,6 @@
+[[headers]]
+  for = "assets/*"
+  [headers.values]
+    cache-control = '''
+    max-age=172800
+    must-revalidate'''
