@@ -2,10 +2,11 @@ import { useEffect, useRef } from "react";
 
 type AudioProps = {
   source: string;
+  volume: number;
   playing: boolean;
 };
 
-export const Audio = ({ source, playing }: AudioProps) => {
+export const Audio = ({ source, volume, playing }: AudioProps) => {
   const ref = useRef<HTMLAudioElement>(null);
 
   const play = () => {
@@ -15,6 +16,12 @@ export const Audio = ({ source, playing }: AudioProps) => {
   const pause = () => {
     ref.current?.pause();
   };
+
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.volume = volume;
+    }
+  }, []);
 
   useEffect(() => {
     if (playing) {
