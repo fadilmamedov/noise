@@ -1,13 +1,13 @@
 import { useEffect, useRef } from "react";
+import HLS from "hls.js";
 
 type AudioProps = {
   source: string;
-  volume: number;
   playing: boolean;
 };
 
-export const Audio = ({ source, volume, playing }: AudioProps) => {
-  const ref = useRef<HTMLAudioElement>(null);
+export const Audio = ({ source, playing }: AudioProps) => {
+  const ref = useRef<HTMLVideoElement>(null);
 
   const play = () => {
     ref.current?.play();
@@ -18,9 +18,11 @@ export const Audio = ({ source, volume, playing }: AudioProps) => {
   };
 
   useEffect(() => {
-    if (ref.current) {
-      ref.current.volume = volume;
-    }
+    if (!ref.current) return;
+
+    const hls = new HLS();
+    hls.loadSource(source);
+    hls.attachMedia(ref.current);
   }, []);
 
   useEffect(() => {
@@ -31,9 +33,5 @@ export const Audio = ({ source, volume, playing }: AudioProps) => {
     }
   }, [playing]);
 
-  return (
-    <audio preload="auto" loop ref={ref}>
-      <source src={source} />
-    </audio>
-  );
+  return <video loop ref={ref} style={{ display: "none" }} />;
 };
