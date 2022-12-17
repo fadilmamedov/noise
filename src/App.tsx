@@ -24,10 +24,8 @@ export const App = () => {
         {isPlaying ? <PauseIcon /> : <PlayIcon />}
       </button>
 
-      <Audio source="/rain.m3u8" playing={isPlaying} />
-
-      {/* <Audio volume={1} source={rain} playing={isPlaying} /> */}
-      {/* <Audio volume={0.3} source={thunder} playing={isPlaying} /> */}
+      <Audio source="/sounds/rain/rain.m3u8" playing={isPlaying} />
+      <Audio source="/sounds/thunder/thunder.m3u8" playing={isPlaying} />
     </div>
   );
 };
