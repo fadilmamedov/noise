@@ -4,9 +4,10 @@ import HLS from "hls.js";
 type AudioProps = {
   source: string;
   playing: boolean;
+  volume?: number;
 };
 
-export const Audio = ({ source, playing }: AudioProps) => {
+export const Audio = ({ source, playing, volume = 1 }: AudioProps) => {
   const ref = useRef<HTMLVideoElement>(null);
 
   const play = () => {
@@ -24,6 +25,12 @@ export const Audio = ({ source, playing }: AudioProps) => {
     hls.loadSource(source);
     hls.attachMedia(ref.current);
   }, []);
+
+  useEffect(() => {
+    if (!ref.current) return;
+
+    ref.current.volume = volume;
+  }, [volume]);
 
   useEffect(() => {
     if (playing) {

@@ -25,7 +25,7 @@ export const App = () => {
       </button>
 
       <Audio source="/sounds/rain/rain.m3u8" playing={isPlaying} />
-      <Audio source="/sounds/thunder/thunder.m3u8" playing={isPlaying} />
+      <Audio volume={0.2} source="/sounds/thunder/thunder.m3u8" playing={isPlaying} />
     </div>
   );
 };
