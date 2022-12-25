@@ -28,9 +28,8 @@ export const App = () => {
         min={0}
         max={1}
         step={0.1}
-        onChange={(e) => {
-          setVolume(Number(e.target.value));
-        }}
+        value={volume}
+        onChange={(e) => setVolume(Number(e.target.value))}
         className="absolute top-1 right-1"
       />
 
