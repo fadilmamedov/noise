@@ -2,5 +2,4 @@
   for = "sounds/*"
   [headers.values]
     cache-control = '''
-    max-age=172800
-    must-revalidate'''
+    max-age=172800'''
