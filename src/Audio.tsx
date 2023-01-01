@@ -30,6 +30,7 @@ export const Audio = ({ source, playing, volume = 1 }: AudioProps) => {
     if (!ref.current) return;
 
     ref.current.volume = volume;
+    ref.current.playbackRate = 10;
   }, [volume]);
 
   useEffect(() => {
