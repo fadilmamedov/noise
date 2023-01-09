@@ -5,3 +5,7 @@
 .slider::-webkit-slider-thumb {
   @apply h-3 w-3 appearance-none rounded-full border-2 border-solid border-slate-200 bg-slate-600 shadow-md;
 }
+
+.slider::-moz-range-thumb {
+  @apply h-3 w-3 appearance-none rounded-full border-2 border-solid border-slate-200 bg-slate-600 shadow-md;
+}

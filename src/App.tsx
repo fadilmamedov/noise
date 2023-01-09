@@ -24,7 +24,7 @@ export const App = () => {
         {isPlaying ? <PauseIcon /> : <PlayIcon />}
       </button>
 
-      <div className="absolute top-4 right-2">
+      <div className="absolute top-4 right-2 w-20">
         <VolumeControl value={volume} onChange={(volume) => setVolume(volume)} />
       </div>
 
