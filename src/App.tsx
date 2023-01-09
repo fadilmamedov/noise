@@ -3,6 +3,7 @@ import { useState } from "react";
 import { PlayIcon, PauseIcon } from "./components/icons";
 import { useKeyDown } from "./hooks/useKeyDown";
 import { Audio } from "./Audio";
+import { VolumeControl } from "./components/VolumeControl";
 
 export const App = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -23,15 +24,9 @@ export const App = () => {
         {isPlaying ? <PauseIcon /> : <PlayIcon />}
       </button>
 
-      <input
-        type="range"
-        min={0}
-        max={1}
-        step={0.1}
-        value={volume}
-        onChange={(e) => setVolume(Number(e.target.value))}
-        className="absolute top-1 right-1"
-      />
+      <div className="absolute top-4 right-2">
+        <VolumeControl value={volume} onChange={(volume) => setVolume(volume)} />
+      </div>
 
       <Audio volume={volume} source="/sounds/rain/rain.m3u8" playing={isPlaying} />
       <Audio volume={0.5 * volume} source="/sounds/coffeeshop/coffeeshop.m3u8" playing={isPlaying} />
